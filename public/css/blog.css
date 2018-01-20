@@ -149,10 +149,12 @@ h6, .h6 {
     color: #999;
 }
 
+
 p {
     word-wrap: break-word;
     word-break: normal;
 }
+
 
 /*
  * Footer

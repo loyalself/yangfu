@@ -36,27 +36,44 @@ class PostController extends Controller
             /*['title.required'=>'请输入文章标题']*/);
 
         /*使用create方法时,要在模型里设置可以赋值的属性,它的结果是一个模型*/
-         Post::create(request(['title','content']));
-         return redirect('/posts');
+         //Post::create(request(['title','content']));
+        $post = new Post();
+        $post->title = request('title');
+        $content = strip_tags(request('content'));
+        $post->content = $content;
+        $post->saveOrFail();
+        return redirect('/posts');
     }
     //编辑文章
-    public function edit()
+    public function edit(Post $post)
     {
-        return view('post.edit');
+        return view('post.edit',compact('post'));
     }
     //编辑文章逻辑
-    public function update()
+    public function update(Post $post)
     {
-        
+        $this->validate(request(),
+            [
+                'title'=>'required|string|max:100|min:5',
+                'content'=>'required|string|min:10'
+            ]);
+        $post->title = request('title');
+        $post->content = request('content');
+        $post->saveOrFail();
+        return redirect("/posts/{$post->id}");
     }
     //删除文章
-    public function delete()
+    public function delete(Post $post)
     {
-        
+        //TODO:用户的权限认证
+        $post->delete();
+        return redirect('/posts');
     }
 
-    public function iamgeUpload()
+    public function imageUpload(Request $request)
     {
-        dd(request()->all());
+        $path = $request->file('wangEditorH5File')->storePublicly(md5(time()));
+        return asset('storage/'.$path);
+        //dd(request()->all());
     }
 }

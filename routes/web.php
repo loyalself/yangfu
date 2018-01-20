@@ -25,9 +25,20 @@ Route::get('/posts/{post}','PostController@show');
 Route::get('/posts/{post}/edit','PostController@edit');
 Route::put('/posts/{post}','PostController@update');
 //删除文章
-Route::get('/posts/delete','PostController@delete');
+Route::get('/posts/{post}/delete','PostController@delete');
 //图片上传
-Route::post('/posts/image/upload','PostController@imageUpload');
+Route::post('/posts/img/upload', 'PostController@imageUpload');
+
+//用户模块
+Route::get('/register','RegisterController@index');
+Route::post('/register','RegisterController@register');
+Route::get('/login','LoginController@index');
+Route::post('/login','LoginController@login');
+Route::get('/logout','LoginController@logout');
+
+//个人设置页面及操作
+Route::get('/user/me/seeting','UserController@seeting');
+Route::post('/user/me/seeting','UserController@seetingStore');
 
 
 
@@ -51,8 +62,3 @@ Route::post('/posts/image/upload','PostController@imageUpload');
 
 
 
-
-
-
-
-Route::view('/testeditor','post.testwangeditor');

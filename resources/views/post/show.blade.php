@@ -5,10 +5,10 @@
             <div class="blog-post">
                 <div style="display:inline-flex">
                     <h2 class="blog-post-title">{{$post->title}}</h2>
-                    <a style="margin: auto"  href="/posts/{{$post->id}}/edit">
+                    <a style="margin: auto"  href="/posts/{{$post->id}}/edit">  {{--编辑--}}
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
-                    <a style="margin: auto"  href="/posts/{{$post->id}}/delete">
+                    <a style="margin: auto"  href="/posts/{{$post->id}}/delete">   {{--删除--}}
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -20,7 +20,6 @@
 
                 {{--文章的内容--}}
                     {!! $post->content !!}
-
                 <div>
                     <a href="/posts/{{$post->id}}/zan" type="button" class="btn btn-primary btn-lg">赞</a>
 

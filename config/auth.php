@@ -37,7 +37,7 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver' => 'session',  //表示用session来存用户信息
             'provider' => 'users',
         ],
 
