@@ -26,6 +26,11 @@ Route::get('/posts/{post}/edit','PostController@edit');
 Route::put('/posts/{post}','PostController@update');
 //删除文章
 Route::get('/posts/{post}/delete','PostController@delete');
+//评论文章
+Route::post('/posts/{post}/comment','PostController@comment');
+//对文章进行点赞和取消赞
+Route::get('/posts/{post}/zan','PostController@zan');
+Route::get('/posts/{post}/unzan','PostController@unzan');
 //图片上传
 Route::post('/posts/img/upload', 'PostController@imageUpload');
 
@@ -39,6 +44,11 @@ Route::get('/logout','LoginController@logout');
 //个人设置页面及操作
 Route::get('/user/me/seeting','UserController@seeting');
 Route::post('/user/me/seeting','UserController@seetingStore');
+
+//个人主页
+Route::get('/user/{user}','UserController@show');
+Route::post('/user/{user}/fan','UserController@fan');
+Route::post('user/{user}/unfan','UserController@unfan');
 
 
 

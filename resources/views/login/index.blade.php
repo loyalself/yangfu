@@ -9,7 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
     <title>登陆</title>
 
     <!-- Bootstrap core CSS -->

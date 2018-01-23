@@ -16,4 +16,12 @@ class UserController extends Controller
     {
         
     }
+
+    /**
+     * 个人介绍页面
+     */
+    public function show()
+    {
+        return view('user.show');
+    }
 }
