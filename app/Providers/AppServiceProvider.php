@@ -16,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //5.4之后string采用mb4string字符编码,这里4个byte才对应一个字符，767/4=191.xxxx
         Schema::defaultStringLength(191);
+        \View::composer('layouts.sidebar',function($view){
+            $topics = \App\Model\Topic::all();    //取出所有专题
+            $view->with('topics',$topics);
+        });
     }
 
     /**
