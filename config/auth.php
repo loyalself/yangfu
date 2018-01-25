@@ -40,7 +40,11 @@ return [
             'driver' => 'session',  //表示用session来存用户信息
             'provider' => 'users',
         ],
-
+        //添加一个守卫
+        'admin'=>[
+            'driver' => 'session',
+            'provider'=>'admins',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,7 +73,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        //添加一个后台登陆的认证
+        'admins' => [
+            'driver' => 'eloquent',
+            'model'  => App\Model\AdminUser::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

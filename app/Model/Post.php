@@ -77,4 +77,16 @@ class Post extends Model
             $q->where('topic_id',$topic_id);
         });
     }
+    /**
+     * Laravel软删除，使用全局scope进行软删除模型:
+     * 当posts表中的status为-1时,页面上将不会显示该文章
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('available',function(Builder $builder){
+            $builder->whereIn('status',[0,1]);
+        });
+    }
+    
 }
