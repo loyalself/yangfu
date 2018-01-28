@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdminRole extends Model
 {
    // protected $table = 'admin_roles';
-
+    protected $guarded = [];
     /**
      * 当前角色的所有权限
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

@@ -12,7 +12,7 @@ class AdminUser extends Authenticatable
     //用户有哪些角色
     public function roles()
     {
-        return $this->belongsToMany(AdminRole::class,'admin_role_user','user_id','user_id')
+        return $this->belongsToMany(AdminRole::class,'admin_role_user','user_id','role_id')
                      ->withPivot(['user_id','role_id']);
     }
     //判断当前用户是否有某个角色
