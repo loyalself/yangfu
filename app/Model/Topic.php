@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
+    protected $guarded = [];
     /**
      * 多对多的关系
      * 属于这个专题的所有文章

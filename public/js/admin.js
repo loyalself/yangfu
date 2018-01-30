@@ -23,3 +23,27 @@ $('.post-audit').click(function(event){
         }
     });
 })
+//删除专题
+$('.resource-delete').click(function(event){
+    if(confirm('您确定不要我了吗?')== false)
+    {
+        return;
+    }
+    var target = $(event.target);
+    event.preventDefault();
+    var url = $(target).attr('delete-url');
+    $.ajax({
+        url:url,
+        method:'post',
+        data:{'_method':'DELETE'},
+        dataType:'json',
+        success:function(data){
+            if(data.error != 0)
+            {
+                alert(data.msg);
+                return;
+            }
+            window.location.reload();
+        }
+    })
+})

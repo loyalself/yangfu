@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model\Fan;
+use App\Model\Notice;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -99,5 +100,26 @@ class User extends Authenticatable
     public function hasStar($uid)
     {
         return $this->stars()->where('star_id', $uid)->count();
+    }
+
+    /**
+     * 一个用户收到的通知,是多对多的关系
+     * 一个用户可以收到多条通知,一个通知可以发送给多个用户
+     * @return $this
+     */
+    public function notices()
+    {
+        return $this->belongsToMany(Notice::class,'user_notice','user_id','notice_id')
+                     ->withPivot(['user_id','notice_id']);
+    }
+
+    /**
+     * 给用户增加通知
+     * @param $notice
+     * @return bool
+     */
+    public function addNotice($notice)
+    {
+        return $this->notices()->save($notice);     //如果是删除使用detach
     }
 }

@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth:web'],function(){
     //投稿
     Route::post('/topic/{topic}/submit','TopicController@submit');
 
+    //通知
+    Route::get('/notices','NoticeController@index');
 });
 //用户模块
 Route::get('/register','RegisterController@index');
