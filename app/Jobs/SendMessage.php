@@ -13,6 +13,8 @@ class SendMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    private $notice;
+
     /**
      * Create a new job instance.
      *
@@ -26,7 +28,7 @@ class SendMessage implements ShouldQueue
 
     /**
      * Execute the job.
-     *
+     * 这个handle指的是job要做的事情
      * @return void
      */
     public function handle()

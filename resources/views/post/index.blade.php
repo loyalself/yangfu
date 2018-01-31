@@ -41,7 +41,7 @@
 
                     <p class="blog-post-meta">
                         {{$post->created_at->toFormattedDateString()}}
-                        <a href="/user/{{$post->user_id}}">{{$post->user->name}}</a>
+                        <a href="/user/{{$post->user->id}}">{{$post->user->name}}</a>
                     </p>
 
                     {!!str_limit($post->content,100,'......')!!}

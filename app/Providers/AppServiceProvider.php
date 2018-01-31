@@ -20,6 +20,13 @@ class AppServiceProvider extends ServiceProvider
             $topics = \App\Model\Topic::all();    //取出所有专题
             $view->with('topics',$topics);
         });
+
+        \DB::listen(function($query){
+            $sql = $query->sql;
+            $bindings = $query->bindings;
+            $time = $query->time;
+            \Log::debug(var_export(compact('sql','bindings','time'),true));
+        });
     }
 
     /**

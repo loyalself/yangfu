@@ -1,12 +1,8 @@
 <?php
-
 namespace App;
-
 use App\Model\Fan;
-use App\Model\Notice;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -109,8 +105,8 @@ class User extends Authenticatable
      */
     public function notices()
     {
-        return $this->belongsToMany(Notice::class,'user_notice','user_id','notice_id')
-                     ->withPivot(['user_id','notice_id']);
+        return $this->belongsToMany(\App\Model\Notice::class, 'user_notice', 'user_id', 'notice_id')
+                     ->withPivot(['user_id', 'notice_id']);
     }
 
     /**

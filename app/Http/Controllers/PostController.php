@@ -16,6 +16,7 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at','desc')
                        ->withCount(['comments','zans'])//获取评论数,使用这个方法后,集合里就有一个comment_count的字段,这个是Laravel自动生成的
                        ->paginate(6);
+        $posts->load('user');       //Laravel中的预加载
         return view('post.index',compact('posts'));
     }
     //文章详情(show方法里需要绑定模型)
