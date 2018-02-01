@@ -103,8 +103,6 @@ Route::group(['prefix'=>'admin'],function(){
             Route::resource('notices','\App\Admin\Controllers\NoticeController',
                 ['only'=>['index','create','store']]);
         });
-
-
     });
 });
 
